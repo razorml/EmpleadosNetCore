@@ -40,6 +40,10 @@ namespace Empleados.Repositories
                     obj.CompanyId =  (int)dt.Rows[i]["CompanyId"];
                     obj.RoleId = (int)dt.Rows[i]["RoleId"];
                     obj.StatusId = (int)dt.Rows[i]["StatusId"];
+                    obj.CreatedOn = (DateTime)dt.Rows[i]["CreatedOn"];
+                    obj.UpdatedOn = (DateTime)dt.Rows[i]["UpdatedOn"];
+                    obj.DeletedOn = (DateTime)dt.Rows[i]["DeletedOn"];
+                    obj.Fax = dt.Rows[i]["Fax"].ToString();
                     lsEmployees.Add(obj);
                 }
                 con.Close();
@@ -71,6 +75,10 @@ namespace Empleados.Repositories
                     obj.CompanyId = (int)dt.Rows[i]["CompanyId"];
                     obj.RoleId = (int)dt.Rows[i]["RoleId"];
                     obj.StatusId = (int)dt.Rows[i]["StatusId"];
+                    obj.CreatedOn = (DateTime)dt.Rows[i]["CreatedOn"];
+                    obj.UpdatedOn = (DateTime)dt.Rows[i]["UpdatedOn"];
+                    obj.DeletedOn = (DateTime)dt.Rows[i]["DeletedOn"];
+                    obj.Fax = dt.Rows[i]["Fax"].ToString();
                     lsEmployees.Add(obj);
                 }
                 con.Close();
@@ -82,7 +90,7 @@ namespace Empleados.Repositories
         {
             List<Employees> lsEmployees = new List<Employees>();
             SqlConnection con = new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
-            using (SqlCommand cmd = new SqlCommand("SpDeleteEmployee", con))
+            using (SqlCommand cmd = new SqlCommand("SpInsertEmployee", con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@CompanyId", SqlDbType.VarChar).Value = Employees.CompanyId;

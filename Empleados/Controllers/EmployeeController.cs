@@ -12,6 +12,8 @@ using Empleados.Repositories;
 
 namespace Empleados.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class EmployeeController : Controller
     {
         public EmployeeRepositories employee { get; set; }
